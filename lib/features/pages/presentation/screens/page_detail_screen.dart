@@ -9,6 +9,8 @@ import '../../../../core/widgets/app_snack.dart';
 import '../../../../core/widgets/async_state_view.dart';
 import '../../../../core/widgets/confirm_dialog.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../blocks/application/blocks_providers.dart';
+import '../../../blocks/domain/block.dart';
 import '../../application/pages_providers.dart';
 import '../../domain/note_page.dart';
 import '../widgets/aviation_meta_chips.dart';
@@ -126,6 +128,13 @@ class PageDetailScreen extends ConsumerWidget {
                 page.isFavorite ? Icons.star_rounded : Icons.star_border_rounded,
                 color: page.isFavorite ? const Color(0xFFF0A02A) : null,
               ),
+            ),
+          if (page != null)
+            IconButton(
+              tooltip: l10n.editorOpen,
+              onPressed: () =>
+                  context.push(AppRoutes.pageEditorPath(page.id)),
+              icon: const Icon(Icons.edit_note_rounded),
             ),
           if (page != null)
             IconButton(
@@ -279,40 +288,7 @@ class _PageDetailBody extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 16),
-        _SectionCard(
-          title: l10n.pagesBodySectionTitle,
-          subtitle: l10n.pagesBodyComingTitle,
-          icon: Icons.segment_rounded,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                l10n.pagesBodyComingBody,
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant,
-                ),
-              ),
-              const SizedBox(height: 12),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: <Widget>[
-                  _BlockChip(icon: Icons.notes_rounded, label: l10n.pagesTitle),
-                  _BlockChip(icon: Icons.title_rounded, label: 'H1 / H2'),
-                  _BlockChip(
-                    icon: Icons.checklist_rounded,
-                    label: l10n.pagesMetadataSectionTitle,
-                  ),
-                  _BlockChip(icon: Icons.table_chart_outlined, label: 'Table'),
-                  _BlockChip(icon: Icons.image_outlined, label: 'Image'),
-                  _BlockChip(icon: Icons.picture_as_pdf_outlined, label: 'PDF'),
-                  _BlockChip(icon: Icons.code_rounded, label: 'Code'),
-                  _BlockChip(icon: Icons.horizontal_rule_rounded, label: 'Divider'),
-                ],
-              ),
-            ],
-          ),
-        ),
+        _ContentPreviewCard(page: page),
         const SizedBox(height: 16),
         _SectionCard(
           title: l10n.pagesSubPagesTitle,
@@ -478,20 +454,107 @@ class _DetailRow extends StatelessWidget {
   }
 }
 
-class _BlockChip extends StatelessWidget {
-  const _BlockChip({required this.icon, required this.label});
+/// بطاقة «المحتوى»: معاينة أول كتل الصفحة + مدخل إلى المحرّر.
+class _ContentPreviewCard extends ConsumerWidget {
+  const _ContentPreviewCard({required this.page});
 
-  final IconData icon;
-  final String label;
+  final NotePage page;
+
+  /// عدد الكتل المعروضة في المعاينة قبل سطر «وبقيت N كتلة».
+  static const int _previewLimit = 3;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AppL10n l10n = context.l10n;
     final ThemeData theme = Theme.of(context);
-    return Chip(
-      avatar: Icon(icon, size: 16),
-      label: Text(label),
-      labelStyle: theme.textTheme.labelSmall,
-      visualDensity: VisualDensity.compact,
+    final AsyncValue<List<NoteBlock>> blocksState =
+        ref.watch(pageBlocksProvider(page.id));
+    final List<NoteBlock> blocks = blocksState.value ?? const <NoteBlock>[];
+    final List<NoteBlock> preview =
+        blocks.take(_previewLimit).toList(growable: false);
+    final int remaining = blocks.length - preview.length;
+
+    return _SectionCard(
+      title: l10n.pagesBodySectionTitle,
+      subtitle: blocksState.isLoading && !blocksState.hasValue
+          ? l10n.stateLoading
+          : l10n.editorBlocksCount(blocks.length),
+      icon: Icons.segment_rounded,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          if (blocksState.isLoading && !blocksState.hasValue)
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: LinearProgressIndicator(minHeight: 3),
+            )
+          else if (blocksState.hasError)
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    l10n.editorExportFailedBody,
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () => ref.invalidate(pageBlocksProvider(page.id)),
+                  child: Text(l10n.actionRetry),
+                ),
+              ],
+            )
+          else if (blocks.isEmpty)
+            Text(
+              l10n.editorEmptyBody,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            )
+          else ...<Widget>[
+            for (final NoteBlock block in preview)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Icon(
+                      block.type.icon,
+                      size: 16,
+                      color: theme.colorScheme.primary,
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        block.previewText.trim().isEmpty
+                            ? block.type.name
+                            : block.previewText.trim(),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.bodySmall,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            if (remaining > 0)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Text(
+                  l10n.editorPreviewMore(remaining),
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ),
+          ],
+          const SizedBox(height: 6),
+          FilledButton.tonalIcon(
+            onPressed: () => context.push(AppRoutes.pageEditorPath(page.id)),
+            icon: const Icon(Icons.edit_note_rounded, size: 18),
+            label: Text(l10n.editorOpen),
+          ),
+        ],
+      ),
     );
   }
 }

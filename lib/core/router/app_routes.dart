@@ -10,11 +10,14 @@ class AppRoutes {
   static const String notebooks = '/notebooks';
   static const String notebookPages = '/notebooks/:notebookId';
   static const String page = '/pages/:pageId';
+  static const String pageEditor = '/pages/:pageId/edit';
   static const String settings = '/settings';
 
   static String notebookPagesPath(String notebookId) => '/notebooks/$notebookId';
 
   static String pagePath(String pageId) => '/pages/$pageId';
+
+  static String pageEditorPath(String pageId) => '/pages/$pageId/edit';
 
   /// مسارات المصادقة — يُسمح بعرضها بدون جلسة.
   static bool isAuthRoute(String location) =>

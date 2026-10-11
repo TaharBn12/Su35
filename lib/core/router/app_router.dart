@@ -9,6 +9,7 @@ import '../../features/auth/presentation/screens/forgot_password_screen.dart';
 import '../../features/auth/presentation/screens/sign_in_screen.dart';
 import '../../features/auth/presentation/screens/sign_up_screen.dart';
 import '../../features/auth/presentation/screens/splash_screen.dart';
+import '../../features/blocks/presentation/screens/block_editor_screen.dart';
 import '../../features/notebooks/presentation/screens/notebooks_screen.dart';
 import '../../features/pages/presentation/screens/notebook_pages_screen.dart';
 import '../../features/pages/presentation/screens/page_detail_screen.dart';
@@ -95,6 +96,13 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
       GoRoute(
         path: AppRoutes.page,
         builder: (BuildContext context, GoRouterState state) => PageDetailScreen(
+          pageId: state.pathParameters['pageId'] ?? '',
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.pageEditor,
+        builder: (BuildContext context, GoRouterState state) =>
+            BlockEditorScreen(
           pageId: state.pathParameters['pageId'] ?? '',
         ),
       ),

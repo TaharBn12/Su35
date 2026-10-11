@@ -220,5 +220,155 @@
   "settingsAboutSection": "About",
   "settingsAboutBody": "SU-35 Notes: an aviation notes workspace built with Flutter, Riverpod, go_router and Supabase (Auth, Postgres, Storage, RLS).",
   "settingsDataSection": "Data",
-  "settingsOfflineState": "Offline caching and sync arrive in phase (d)."
+  "settingsOfflineState": "Offline caching and sync arrive in phase (d).",
+  "editorTitle": "Editor",
+  "editorOpen": "Edit content",
+  "editorBlocksCount": "{count, plural, =0{No blocks} =1{1 block} other{{count} blocks}}",
+  "@editorBlocksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "editorPreviewTitle": "Content preview",
+  "editorPreviewMore": "{count, plural, =1{And 1 more block} other{And {count} more blocks}}",
+  "@editorPreviewMore": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "editorEmptyTitle": "No content yet",
+  "editorEmptyBody": "Start by adding your first block: text, heading, checklist, table, image or PDF.",
+  "editorEmptyCta": "Add block",
+  "editorAddBlock": "Add block",
+  "editorInsertAfter": "Insert block after",
+  "editorChangeType": "Change type",
+  "editorChangeTypeConfirmBody": "The current block content will be replaced with the new type's default content. Continue?",
+  "editorMoveUp": "Move up",
+  "editorMoveDown": "Move down",
+  "editorDeleteBlockConfirmBody": "This block's content will be deleted permanently.",
+  "editorSaving": "Saving…",
+  "editorSaved": "Saved",
+  "editorSavedAt": "Saved {time}",
+  "@editorSavedAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "editorSaveFailed": "Save failed — tap to retry",
+  "editorSaveNow": "Save now",
+  "editorUnsaved": "Unsaved changes",
+  "editorExportPdf": "Export PDF",
+  "editorExportPreparing": "Preparing PDF…",
+  "editorExportSheetTitle": "Export page to PDF",
+  "editorExportShare": "Share file",
+  "editorExportPrint": "Print or preview",
+  "editorExportReady": "PDF is ready",
+  "editorExportFailedBody": "Could not create the PDF. Please try again.",
+  "editorExportNoFonts": "Arabic fonts were not loaded, so Arabic text may render incompletely. Add Cairo-Regular.ttf and Cairo-Bold.ttf to assets/fonts, or connect to the internet once.",
+  "blockTypeSheetTitle": "Choose a block type",
+  "blockTypeGroupBasic": "Basics",
+  "blockTypeGroupMedia": "Attachments",
+  "blockTypeGroupAdvanced": "Advanced",
+  "blockTypeText": "Text",
+  "blockTypeHeading": "Heading",
+  "blockTypeChecklist": "Checklist",
+  "blockTypeTable": "Table",
+  "blockTypeImage": "Image",
+  "blockTypePdf": "PDF file",
+  "blockTypeCode": "Code",
+  "blockTypeDivider": "Divider",
+  "blockTypeQuote": "Quote",
+  "blockTypeCallout": "Callout",
+  "blockTextHint": "Write here…",
+  "blockHeadingHint": "Section title",
+  "blockHeadingLevel": "Level",
+  "blockHeadingLevelValue": "Level {level}",
+  "@blockHeadingLevelValue": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "blockChecklistAddItem": "Add item",
+  "blockChecklistItemHint": "New item",
+  "blockChecklistProgress": "{done} of {total}",
+  "@blockChecklistProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "blockTableAddRow": "Add row",
+  "blockTableAddColumn": "Add column",
+  "blockTableDeleteRow": "Delete row",
+  "blockTableDeleteColumn": "Delete column",
+  "blockTableHeaderHint": "Column header",
+  "blockTableCellHint": "Cell",
+  "blockCodeLanguageHint": "Language (dart, sql…)",
+  "blockCodeHint": "Write code…",
+  "blockQuoteHint": "Quote text",
+  "blockCalloutTitleHint": "Callout title",
+  "blockCalloutTextHint": "Callout text",
+  "blockCalloutTone": "Tone",
+  "blockCalloutToneInfo": "Info",
+  "blockCalloutToneWarning": "Warning",
+  "blockCalloutToneDanger": "Danger",
+  "blockMediaAddImage": "Add image",
+  "blockMediaAddPdf": "Add PDF file",
+  "blockMediaPickGallery": "From gallery",
+  "blockMediaTakePhoto": "Take a photo",
+  "blockMediaReplace": "Replace file",
+  "blockMediaRemove": "Remove attachment",
+  "blockMediaRemoveConfirmBody": "The file will be permanently deleted from storage.",
+  "blockMediaUploading": "Uploading…",
+  "blockMediaUploaded": "Attachment uploaded",
+  "blockMediaUploadFailed": "Could not upload the attachment",
+  "blockMediaCaptionHint": "Caption (optional)",
+  "blockMediaOpen": "Open file",
+  "blockMediaEmptyImage": "No image added yet",
+  "blockMediaEmptyPdf": "No file added yet",
+  "blockMediaTooLarge": "The file exceeds the 50 MB limit",
+  "blockMediaLoadFailed": "Could not load the attachment",
+  "blockMediaPreviewUnavailable": "No preview available for this type",
+  "blockMenuTooltip": "Block options",
+  "pdfExportedOn": "Exported on {date}",
+  "@pdfExportedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "pdfPageOf": "Page {page} of {total}",
+  "@pdfPageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "pdfAttachmentsSection": "Attachments",
+  "pdfLinkedFile": "Attached file (not embedded): {name}",
+  "@pdfLinkedFile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "pdfNoContent": "This page has no content yet"
 }

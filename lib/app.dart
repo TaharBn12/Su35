@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart'
+    show FlutterQuillLocalizations;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,6 +14,7 @@ import 'l10n/l10n.dart';
 /// جذر التطبيق: يربط المظهر واللغة (عربي/إنجليزي + RTL) بالموجّه.
 ///
 /// - `themeMode` و `locale` يأتيان من [settingsControllerProvider] المحفوظ محليًا.
+/// - تُضاف مندوبات ترجمة محرّر Quill إلى جانب مندوبات التطبيق.
 /// - دعم RTL يحدث تلقائيًا لأن اللغة العربية ضمن `supportedLocales`
 ///   ومندوبات الترجمة الرسمية (GlobalMaterialLocalizations) تُطبّق الاتجاه.
 class Su35App extends ConsumerWidget {
@@ -30,7 +33,12 @@ class Su35App extends ConsumerWidget {
       themeMode: settings.themeMode,
       locale: settings.locale,
       supportedLocales: AppL10n.supportedLocales,
-      localizationsDelegates: AppL10n.localizationsDelegates,
+      // مندوبات التطبيق + مندوبات محرّر Quill (غالبًا ما يحتاجها المحرّر
+      // لأزراره ونصوصه الداخلية).
+      localizationsDelegates: <LocalizationsDelegate<dynamic>>[
+        ...AppL10n.localizationsDelegates,
+        FlutterQuillLocalizations.delegate,
+      ],
       routerConfig: router,
       builder: (BuildContext context, Widget? child) {
         // نحافظ على حجم خط النظام: لا تكبير تلقائي عند تغيير اللغة.
