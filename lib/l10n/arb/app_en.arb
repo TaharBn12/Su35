@@ -1,0 +1,224 @@
+{
+  "@@locale": "en",
+  "appName": "SU-35 Notes",
+  "@appName": {
+    "description": "Application name shown in the launcher and app bar"
+  },
+  "appTagline": "Aviation notes workspace for pilots & engineers",
+  "appVersion": "Version {version}",
+  "@appVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "setupRequiredTitle": "Setup required",
+  "setupRequiredBody": "Supabase keys were not found. Copy .env.example to .env, fill in your project URL and publishable key, then restart the app.",
+  "setupRequiredSteps": "1. Create a project on supabase.com\n2. Run supabase/schema.sql in the SQL editor\n3. Copy .env.example to .env and fill the values\n4. Run: flutter pub get && flutter run",
+  "startupFailedTitle": "The app could not start",
+  "actionCancel": "Cancel",
+  "actionSave": "Save",
+  "actionCreate": "Create",
+  "actionDelete": "Delete",
+  "actionEdit": "Edit",
+  "actionClose": "Close",
+  "actionRetry": "Retry",
+  "actionRefresh": "Refresh",
+  "actionDone": "Done",
+  "actionBack": "Back",
+  "actionContinue": "Continue",
+  "stateLoading": "Loading…",
+  "stateEmpty": "Nothing here yet",
+  "stateTechnicalDetails": "Technical details",
+  "stateNotSet": "Not set",
+  "commonSearch": "Search…",
+  "stateOptional": "optional",
+  "stateOfflineBanner": "You are offline. Changes will sync when the connection returns.",
+  "errorGenericTitle": "Something went wrong",
+  "errorNetworkBody": "Could not reach the server. Check your internet connection and try again.",
+  "errorAuthBody": "Your session has expired. Please sign in again.",
+  "errorPermissionBody": "You do not have permission to perform this action.",
+  "errorNotFoundBody": "The requested item no longer exists.",
+  "errorValidationBody": "Some fields are invalid. Please review and try again.",
+  "errorConflictBody": "This item already exists.",
+  "errorUnknownBody": "An unexpected error occurred. Please try again.",
+  "errorSignInRequired": "Please sign in to continue.",
+  "validationEmailRequired": "Email is required",
+  "validationEmailInvalid": "Enter a valid email address",
+  "validationPasswordRequired": "Password is required",
+  "validationPasswordTooShort": "Password must be at least 8 characters",
+  "validationPasswordsMismatch": "Passwords do not match",
+  "validationNameRequired": "Name is required",
+  "validationTitleRequired": "Title is required",
+  "validationTitleTooLong": "Title is too long (max 200 characters)",
+  "validationIcaoInvalid": "ICAO code must be 4 letters (e.g. OLBA)",
+  "validationTailNumberInvalid": "Registration must be 2-16 characters (letters, digits, hyphen)",
+  "validationFixFields": "Please fix the highlighted fields",
+  "authSignInTitle": "Welcome back",
+  "authSignInSubtitle": "Sign in to reach your aviation notebooks",
+  "authSignInButton": "Sign in",
+  "authSignUpTitle": "Create your account",
+  "authSignUpSubtitle": "Notebooks for flight logs, maintenance and theory",
+  "authSignUpButton": "Create account",
+  "authEmailLabel": "Email",
+  "authEmailHint": "pilot@example.com",
+  "authPasswordLabel": "Password",
+  "authPasswordHint": "At least 8 characters",
+  "authConfirmPasswordLabel": "Confirm password",
+  "authDisplayNameLabel": "Full name",
+  "authDisplayNameHint": "Capt. Ahmad",
+  "authRoleLabel": "Role",
+  "authForgotPasswordLink": "Forgot password?",
+  "authForgotPasswordTitle": "Reset your password",
+  "authForgotPasswordSubtitle": "We will email you a secure reset link",
+  "authForgotPasswordButton": "Send reset link",
+  "authResetSentTitle": "Check your inbox",
+  "authResetSentBody": "If an account exists for {email}, a reset link is on its way.",
+  "@authResetSentBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "authBackToSignIn": "Back to sign in",
+  "authNoAccountPrompt": "No account yet?",
+  "authHaveAccountPrompt": "Already have an account?",
+  "authSignOutButton": "Sign out",
+  "authSignOutConfirmBody": "You will need to sign in again to reach your notebooks.",
+  "authSignedOutMessage": "Signed out",
+  "authWelcomeMessage": "Welcome, {name}",
+  "@authWelcomeMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "authAccountCreatedCheckEmail": "Account created. Confirm your email if confirmation is enabled in Supabase, then sign in.",
+  "rolePilot": "Pilot",
+  "roleEngineer": "Maintenance engineer",
+  "roleStudent": "Student pilot",
+  "roleInstructor": "Instructor",
+  "roleOther": "Other",
+  "notebooksTitle": "Notebooks",
+  "notebooksSubtitle": "Your workspace",
+  "notebooksEmptyTitle": "No notebooks yet",
+  "notebooksEmptyBody": "Notebooks group your pages: flight logs, maintenance jobs, theory summaries.",
+  "notebooksEmptyCta": "Create your first notebook",
+  "notebooksNewTitle": "New notebook",
+  "notebooksEditTitle": "Edit notebook",
+  "notebooksTitleLabel": "Notebook title",
+  "notebooksTitleHint": "A320 Fleet — 2026",
+  "notebooksDescriptionLabel": "Description",
+  "notebooksDescriptionHint": "What is this notebook for?",
+  "notebooksIconLabel": "Icon",
+  "notebooksColorLabel": "Color",
+  "notebooksFavoriteLabel": "Pinned",
+  "notebooksFavoriteHint": "Keep it at the top of the list",
+  "notebooksCreated": "Notebook created",
+  "notebooksUpdated": "Notebook updated",
+  "notebooksDeleted": "Notebook deleted",
+  "notebooksDeleteConfirmBody": "This permanently deletes the notebook and every page inside it.",
+  "notebooksShowArchived": "Show archived",
+  "notebooksArchivedBadge": "Archived",
+  "notebooksArchiveAction": "Archive",
+  "notebooksUnarchiveAction": "Restore",
+  "notebooksPagesCount": "{count, plural, =0{No pages} =1{1 page} other{{count} pages}}",
+  "@notebooksPagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pagesTitle": "Pages",
+  "pagesCount": "{count, plural, =0{No pages} =1{1 page} other{{count} pages}}",
+  "@pagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pagesEmptyTitle": "No pages in this notebook",
+  "pagesEmptyBody": "Create a page, then pick an aviation template for it.",
+  "pagesEmptyCta": "Create a page",
+  "pagesNewTitle": "New page",
+  "pagesEditTitle": "Edit page",
+  "pagesTitleLabel": "Page title",
+  "pagesTitleHint": "Flight OLBA → LFPG",
+  "pagesSummaryLabel": "Summary",
+  "pagesSummaryHint": "One line describing what happened",
+  "pagesIconLabel": "Icon",
+  "pagesCreated": "Page created",
+  "pagesUpdated": "Page updated",
+  "pagesDeleted": "Page deleted",
+  "pagesDeleteConfirmBody": "This deletes the page, its sub-pages and all of its content.",
+  "pagesFavoriteAdd": "Pin page",
+  "pagesFavoriteRemove": "Unpin page",
+  "pagesFavorited": "Page pinned",
+  "pagesUnfavorited": "Page unpinned",
+  "pagesSubPagesTitle": "Sub-pages",
+  "pagesAddSubPage": "Add sub-page",
+  "pagesNoSubPages": "No sub-pages yet",
+  "pagesParentLabel": "Parent page",
+  "pagesParentNone": "Top level",
+  "pagesNotFound": "This page no longer exists",
+  "pagesBodySectionTitle": "Content",
+  "pagesBodyComingTitle": "Rich editor arrives in phase (b)",
+  "pagesBodyComingBody": "This page will host text, headings, checklists, tables, images, PDFs and code blocks. Phase (a) already stores titles, icons, summaries and all aviation fields.",
+  "pagesMetadataSectionTitle": "Aviation details",
+  "pagesMetadataSectionSubtitle": "Aircraft type, registration, ATA chapter, airport and date",
+  "pagesUpdatedAtLabel": "Updated {date}",
+  "@pagesUpdatedAtLabel": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "pagesCreatedAtLabel": "Created {date}",
+  "@pagesCreatedAtLabel": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "pagesOpenHint": "Open page",
+  "fieldAircraftType": "Aircraft type",
+  "fieldAircraftTypeHint": "A320, B737-800, C172…",
+  "fieldTailNumber": "Registration",
+  "fieldTailNumberHint": "OO-SNJ, A6-EVK…",
+  "fieldAtaChapter": "ATA chapter",
+  "fieldAtaChapterHint": "Search: 21, 32, 71…",
+  "fieldAirport": "Airport (ICAO)",
+  "fieldAirportHint": "OLBA, LFPG, KJFK",
+  "fieldFlightDate": "Date",
+  "fieldFlightDateHint": "YYYY-MM-DD",
+  "fieldPickDate": "Pick a date",
+  "fieldClearDate": "Clear date",
+  "fieldAnyAircraft": "All aircraft types",
+  "fieldAnyAta": "All ATA chapters",
+  "settingsTitle": "Settings",
+  "settingsAppearanceSection": "Appearance",
+  "settingsThemeLabel": "Theme",
+  "settingsThemeSystem": "System",
+  "settingsThemeLight": "Light",
+  "settingsThemeDark": "Dark",
+  "settingsLanguageLabel": "Language",
+  "settingsLanguageArabic": "العربية",
+  "settingsLanguageEnglish": "English",
+  "settingsAccountSection": "Account",
+  "settingsEmailLabel": "Email",
+  "settingsRoleLabel": "Role",
+  "settingsMemberSinceLabel": "Member since",
+  "settingsEditProfile": "Edit profile",
+  "settingsProfileSaved": "Profile updated",
+  "settingsAboutSection": "About",
+  "settingsAboutBody": "SU-35 Notes: an aviation notes workspace built with Flutter, Riverpod, go_router and Supabase (Auth, Postgres, Storage, RLS).",
+  "settingsDataSection": "Data",
+  "settingsOfflineState": "Offline caching and sync arrive in phase (d)."
+}

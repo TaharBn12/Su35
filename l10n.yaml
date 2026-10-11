@@ -1,0 +1,12 @@
+# ══════════════════════════════════════════════════════════════════
+#  إعدادات توليد الترجمات (Flutter gen-l10n) — دعم عربي/إنجليزي + RTL
+#  تُولَّد الملفات تلقائيًا عند flutter run أو flutter build،
+#  أو يدويًا بالأمر:  flutter gen-l10n
+# ══════════════════════════════════════════════════════════════════
+arb-dir: lib/l10n/arb
+template-arb-file: app_en.arb
+output-dir: lib/l10n/generated
+output-localization-file: app_localizations.dart
+output-class: AppL10n
+nullable-getter: false
+use-deferred-loading: false
