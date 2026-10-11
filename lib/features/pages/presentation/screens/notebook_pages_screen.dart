@@ -51,7 +51,7 @@ class NotebookPagesScreen extends ConsumerWidget {
     final PageActions actions = ref.read(pageActionsProvider);
 
     if (action == PageAction.open) {
-      context.go(AppRoutes.pagePath(page.id));
+      context.push(AppRoutes.pagePath(page.id));
       return;
     }
 

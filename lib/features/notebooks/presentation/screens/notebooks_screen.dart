@@ -170,7 +170,7 @@ class _NotebooksScreenState extends ConsumerState<NotebooksScreen> {
           ),
           IconButton(
             tooltip: l10n.settingsTitle,
-            onPressed: () => context.go(AppRoutes.settings),
+            onPressed: () => context.push(AppRoutes.settings),
             icon: const Icon(Icons.settings_outlined),
           ),
         ],
@@ -220,7 +220,7 @@ class _NotebooksScreenState extends ConsumerState<NotebooksScreen> {
                       final Notebook notebook = visible[index];
                       return NotebookCard(
                         notebook: notebook,
-                        onTap: () => context.go(
+                        onTap: () => context.push(
                           AppRoutes.notebookPagesPath(notebook.id),
                         ),
                         onAction: (NotebookAction action) {

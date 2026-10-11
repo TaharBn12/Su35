@@ -88,7 +88,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
           TextButton(
             onPressed: _isSubmitting
                 ? null
-                : () => context.go(AppRoutes.signUp),
+                : () => context.push(AppRoutes.signUp),
             child: Text(l10n.authSignUpButton),
           ),
         ],
@@ -124,7 +124,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
               child: TextButton(
                 onPressed: _isSubmitting
                     ? null
-                    : () => context.go(AppRoutes.forgotPassword),
+                    : () => context.push(AppRoutes.forgotPassword),
                 child: Text(l10n.authForgotPasswordLink),
               ),
             ),

@@ -66,7 +66,7 @@ class _AppPickerFieldState<T> extends State<AppPickerField<T>> {
   }
 
   Future<void> _open() async {
-    final T? selected = await showModalBottomSheet<T?>(
+    final Object? selected = await showModalBottomSheet<Object?>(
       context: context,
       isScrollControlled: true,
       useSafeArea: true,
@@ -80,10 +80,16 @@ class _AppPickerFieldState<T> extends State<AppPickerField<T>> {
       ),
     );
 
-    if (selected != null) {
-      widget.onSelected(selected);
-    } else if (widget.value != null && widget.clearLabel != null) {
+    // إغلاق الورقة بلا اختيار (سحب/ضغط خارجها) لا يغيّر القيمة الحالية.
+    if (selected == null) {
+      return;
+    }
+    if (selected is _ClearSelection) {
       widget.onSelected(null);
+      return;
+    }
+    if (selected is T) {
+      widget.onSelected(selected);
     }
   }
 
@@ -104,6 +110,12 @@ class _AppPickerFieldState<T> extends State<AppPickerField<T>> {
       ),
     );
   }
+}
+
+/// قيمة خاصة تعني «امسح الاختيار» — نُميّزها عن إغلاق الورقة دون اختيار
+/// حتى لا يُمسح الاختيار الحالي عند السحب لأسفل أو الضغط خارج الورقة.
+class _ClearSelection {
+  const _ClearSelection();
 }
 
 class _PickerSheet<T> extends StatefulWidget {
@@ -209,7 +221,8 @@ class _PickerSheetState<T> extends State<_PickerSheet<T>> {
                     return ListTile(
                       leading: const Icon(Icons.close_rounded),
                       title: Text(widget.clearLabel!),
-                      onTap: () => Navigator.of(context).pop(null),
+                      onTap: () =>
+                          Navigator.of(context).pop(const _ClearSelection()),
                     );
                   }
                   final int optionIndex =

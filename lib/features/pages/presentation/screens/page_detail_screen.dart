@@ -329,7 +329,7 @@ class _PageDetailBody extends ConsumerWidget {
                   child: SubPageTile(
                     page: node.page,
                     onOpen: () =>
-                        context.go(AppRoutes.pagePath(node.page.id)),
+                        context.push(AppRoutes.pagePath(node.page.id)),
                     onAddChild: () => showPageFormSheet(
                       context,
                       notebookId: page.notebookId,
