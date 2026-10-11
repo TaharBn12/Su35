@@ -1,8 +1,13 @@
 # --- Secrets: never commit real Supabase keys -------------------------------
+# `.env` files are ignored everywhere, except the two committed templates:
+#   • .env.example            – documentation template
+#   • assets/env/.env         – PLACEHOLDER bundle (required by pubspec assets)
+# After pasting your real keys into assets/env/.env, stop git from tracking it:
+#   git update-index --skip-worktree assets/env/.env
 .env
-assets/env/.env
 !.env.example
-!assets/env/.env.example
+assets/env/.env*
+!assets/env/.env
 
 # --- Flutter / Dart ---------------------------------------------------------
 **/doc/api/
