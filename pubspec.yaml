@@ -1,0 +1,66 @@
+name: avnotes
+description: "AeroNotes - Aviation & aircraft notes workspace (Notion-like) built with Flutter + Supabase."
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  # Verified against the current stable toolchain:
+  # Flutter 3.47 stable / Dart 3.13 (go_router 18 requires Flutter >= 3.44,
+  # flutter_riverpod 3.4 requires Dart >= 3.12, supabase_flutter 2.18 requires Dart >= 3.9).
+  sdk: ^3.13.0
+  flutter: ">=3.47.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # --- State management -----------------------------------------------------
+  # Riverpod 3.x : Notifier / AsyncNotifier / Provider (no codegen needed).
+  # Legacy providers (StateProvider, StateNotifierProvider) now live in
+  # package:flutter_riverpod/legacy.dart - this project does not use them.
+  flutter_riverpod: ^3.4.3
+
+  # --- Routing --------------------------------------------------------------
+  go_router: ^18.0.2
+
+  # --- Backend (Auth + Postgres + Storage + Realtime) -----------------------
+  supabase_flutter: ^2.18.2
+
+  # --- Environment / secrets (no keys hard-coded in Dart) -------------------
+  flutter_dotenv: ^5.2.1
+
+  # --- Local persistence for user preferences (theme / locale) --------------
+  shared_preferences: ^2.5.6
+
+  # --- Utilities ------------------------------------------------------------
+  intl: ^0.20.2
+  uuid: ^4.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  # Added in Stage D (offline-first with Drift + later sync):
+  # drift: ^2.35.2
+  # drift_flutter: ^0.3.1
+  # path_provider: ^2.1.6
+  # drift_dev: ^2.35.1
+  # build_runner: ^2.16.2
+
+  # Added in Stage B (rich text editor) / Stage C (attachments + PDF export):
+  # flutter_quill: ^11.0.0
+  # cached_network_image: ^4.0.4
+  # file_picker: ^10.0.0
+  # pdf: ^3.11.0
+  # printing: ^5.14.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/env/.env
+    # Test fixtures are bundled too so `flutter test` can exercise the .env guard.
+    - test/fixtures/

@@ -1,0 +1,51 @@
+# --- Secrets: never commit real Supabase keys -------------------------------
+.env
+assets/env/.env
+!.env.example
+!assets/env/.env.example
+
+# --- Flutter / Dart ---------------------------------------------------------
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+pubspec.lock
+
+# --- Generated code (Drift / build_runner) ----------------------------------
+*.g.dart
+*.freezed.dart
+*.drift.dart
+
+# --- IDE --------------------------------------------------------------------
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# --- Platforms --------------------------------------------------------------
+android/.gradle/
+android/local.properties
+android/key.properties
+android/app/debug/
+android/app/profile/
+android/app/release/
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+macos/Pods/
+windows/flutter/ephemeral/
+linux/flutter/ephemeral/
+
+# --- OS ---------------------------------------------------------------------
+.DS_Store
+Thumbs.db

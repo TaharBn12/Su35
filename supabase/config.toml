@@ -1,0 +1,56 @@
+# Supabase CLI configuration for AeroNotes.
+#
+# Only the values that matter for this project are set; everything else uses
+# the CLI defaults. Use it for a *local* stack:
+#
+#   supabase start          # boots Postgres + Auth + Storage + Studio in Docker
+#   supabase db reset       # replays every file in supabase/migrations
+#   supabase status         # prints the local URL + anon key -> copy into assets/env/.env
+#
+# To apply the same migrations to a hosted project instead:
+#
+#   supabase link --project-ref <ref>
+#   supabase db push
+
+project_id = "aeronotes"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 500
+
+[db]
+port = 54322
+major_version = 17
+
+[db.migrations]
+schema_paths = []
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:54321"
+additional_redirect_urls = ["https://127.0.0.1:54321"]
+
+[auth.email]
+enable_signup = true
+# Local development: no SMTP server needed, the confirmation link is printed
+# in `supabase status` / the Studio logs.
+double_confirm_changes = false
+enable_confirmations = false
+
+[auth.email.template.confirmation]
+subject = "Confirm your AeroNotes account"
+content_path = "./templates/confirmation.html"
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[analytics]
+enabled = false
